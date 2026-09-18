@@ -67,3 +67,28 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# Python
+__pycache__/
+*.pyc
+model/params.npz
+
+# Dados baixados do xeno-canto (grandes) e artefatos de dados reais
+data/
+*.mp3
+model/real_features.npz
+# chave da API (nunca commitar)
+.xc_key
+
+# Videos da demonstracao (>100 MB; GitHub rejeita. Ficam no Google Drive,
+# com os links no README). NAO tente commitar/push estes arquivos.
+*.mp4
+
+# Pasta montada para o Arduino IDE (copias geradas de src/ e include/)
+arduino/
+*.key

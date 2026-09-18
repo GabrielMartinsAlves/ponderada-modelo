@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Gabriel Alves",
+  "editor": "wokwi",
+  "comments": [
+    "Detector de bem-te-vi. O Wokwi nao simula audio real do INMP441, entao o",
+    "firmware roda em WOKWI_SIM=1: o botao BEM-TE-VI (GPIO4) injeta o canto e o",
+    "botao RUIDO (GPIO5) injeta ruido. LED (GPIO2) e buzzer (GPIO26) sinalizam."
+  ],
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 30,
+      "left": -180,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -80,
+      "left": 250,
+      "rotate": 0,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -140,
+      "left": 360,
+      "attrs": { "color": "red", "label": "ALERTA" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnBem",
+      "top": 120,
+      "left": 290,
+      "attrs": { "color": "green", "label": "BEM-TE-VI" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnNoise",
+      "top": 240,
+      "left": 290,
+      "attrs": { "color": "grey", "label": "RUIDO" }
+    }
+  ],
+  "connections": [
+    [ "esp:26", "bz1:1", "purple", [] ],
+    [ "bz1:2", "esp:GND.1", "black", [] ],
+
+    [ "esp:2", "r1:1", "green", [] ],
+    [ "r1:2", "led1:A", "green", [] ],
+    [ "led1:C", "esp:GND.2", "black", [] ],
+
+    [ "esp:4", "btnBem:1.l", "blue", [] ],
+    [ "btnBem:2.r", "esp:GND.3", "black", [] ],
+
+    [ "esp:5", "btnNoise:1.l", "orange", [] ],
+    [ "btnNoise:2.r", "esp:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}
